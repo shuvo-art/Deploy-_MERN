@@ -116,7 +116,7 @@ const Signup = () => {
               className="form-control"
             >
               <option value="volunteer">Volunteer</option>
-              <option value="admin">Admin</option>
+              <option value="admin" disabled>Admin</option>
             </select>
             <div className="error mt-2">
               {formik.touched.role && formik.errors.role}
