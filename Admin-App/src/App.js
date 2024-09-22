@@ -17,6 +17,7 @@ import AddExpense from "./Pages/AddExpense";
 import ExpenseList from "./Pages/ExpenseList";
 import AddRelief from "./Pages/AddRelief";
 import ReliefList from "./Pages/ReliefList";
+import DownloadReports from "./Pages/DownloadReports";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -73,6 +74,16 @@ function App() {
               path="/relief-list"
               element={
                 <PrivateRoute isAuthenticated={!!user} component={ReliefList} />
+              }
+            />
+            {/* Admin-only route for downloading reports */}
+            <Route
+              path="/generate-report"
+              element={
+                <PrivateRoute
+                  isAuthenticated={!!user && user.role === "admin"}
+                  component={DownloadReports}
+                />
               }
             />
           </Route>
